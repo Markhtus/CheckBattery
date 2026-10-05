@@ -15,9 +15,9 @@
 
 ## 📖 Sobre o projeto
 
-baterias de íon-lítio duram mais quando evitam ficar muito tempo em 100% de carga. Muitos notebooks trazem uma opção de BIOS ou software do fabricante para limitar a carga em 80%, mas nem todos têm esse recurso.
+Baterias de íon-lítio duram mais quando evitam ficar muito tempo em 100% de carga. Muitos notebooks trazem uma opção de BIOS ou software do fabricante para limitar a carga em 80%, mas nem todos têm esse recurso.
 
-O **Aviso de bateria** é um programa leve para Windows que roda em segundo plano e, quando a bateria atinge o limite configurado (padrão: **80%**), exibe uma janela pedindo para remover o carregador. A janela **só fecha quando o carregador é desconectado**, ou quando o usuário opta por carregar até 100%.
+O **Battery Alert** é um programa leve para Windows que roda em segundo plano e, quando a bateria atinge o limite configurado (padrão: **80%**), exibe uma janela pedindo para remover o carregador. A janela **só fecha quando o carregador é desconectado**, ou quando o usuário opta por carregar até 100%.
 
 > ℹ️ O programa **avisa**, mas não corta a carga sozinho. Quem remove o carregador é o usuário.
 
