@@ -4,18 +4,11 @@ import tkinter as tk
 
 import psutil
 
-# Uso normal: python bateria.py
-# Uso em teste: python bateria.py 60 5
 LIMITE = int(sys.argv[1]) if len(sys.argv) > 1 else 80
 INTERVALO = int(sys.argv[2]) if len(sys.argv) > 2 else 30
 
 
 def aviso(percent):
-    """
-    Mostra a janela e só retorna quando:
-      - o usuário clicar em "Continuar carregando" -> retorna True
-      - o carregador for removido                  -> retorna False
-    """
     escolha = {"continuar": False}
 
     root = tk.Tk()
@@ -23,7 +16,6 @@ def aviso(percent):
     root.attributes("-topmost", True)
     root.resizable(False, False)
 
-    # Bloqueia o botão X e o Alt+F4
     root.protocol("WM_DELETE_WINDOW", lambda: None)
 
     texto = tk.Label(
@@ -60,17 +52,15 @@ def aviso(percent):
 
     def checar():
         bateria = psutil.sensors_battery()
-        # Carregador removido (ou sem bateria): fecha a janela
         if bateria is None or not bateria.power_plugged:
             root.destroy()
             return
         atualizar_texto(bateria.percent)
-        root.after(1000, checar)  # checa de novo em 1 segundo
+        root.after(1000, checar)
 
     atualizar_texto(percent)
     root.after(1000, checar)
 
-    # Centraliza a janela na tela
     root.update_idletasks()
     largura = root.winfo_width()
     altura = root.winfo_height()
@@ -88,21 +78,17 @@ def main():
     while True:
         bateria = psutil.sensors_battery()
 
-        # PC sem bateria (desktop): encerra
         if bateria is None:
             break
 
         if not bateria.power_plugged:
-            # Carregador removido: reinicia o ciclo
             continuar_ate_100 = False
 
         elif bateria.percent >= LIMITE and not continuar_ate_100:
-            # Fica preso aqui até desplugar ou clicar em "Continuar"
             if aviso(bateria.percent):
                 continuar_ate_100 = True
 
         time.sleep(INTERVALO)
-
 
 if __name__ == "__main__":
     main()
