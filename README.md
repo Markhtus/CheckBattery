@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔋 Aviso de Bateria
+# 🔋 Battery Alert
 
 **Preserve a vida útil da bateria do seu notebook com um lembrete simples e persistente.**
 
@@ -15,9 +15,9 @@
 
 ## 📖 Sobre o projeto
 
-Baterias de íon-lítio duram mais quando evitam ficar muito tempo em 100% de carga. Muitos notebooks trazem uma opção de BIOS ou software do fabricante para limitar a carga em 80%, mas nem todos têm esse recurso.
+baterias de íon-lítio duram mais quando evitam ficar muito tempo em 100% de carga. Muitos notebooks trazem uma opção de BIOS ou software do fabricante para limitar a carga em 80%, mas nem todos têm esse recurso.
 
-O **Aviso de Bateria** é um programa leve para Windows que roda em segundo plano e, quando a bateria atinge o limite configurado (padrão: **80%**), exibe uma janela pedindo para remover o carregador. A janela **só fecha quando o carregador é desconectado**, ou quando o usuário opta por carregar até 100%.
+O **Aviso de bateria** é um programa leve para Windows que roda em segundo plano e, quando a bateria atinge o limite configurado (padrão: **80%**), exibe uma janela pedindo para remover o carregador. A janela **só fecha quando o carregador é desconectado**, ou quando o usuário opta por carregar até 100%.
 
 > ℹ️ O programa **avisa**, mas não corta a carga sozinho. Quem remove o carregador é o usuário.
 
@@ -55,11 +55,11 @@ Carregador conectado?
 
 Não é necessário ter Python instalado.
 
-1. Acesse a página de [**Releases**](https://github.com/Markhtus/CheckBattery/releases) e baixe o `bateria.exe` da versão mais recente.
-2. Copie o arquivo para uma pasta fixa, por exemplo `C:\Programas\Bateria\`.
+1. Acesse a página de [**Releases**](https://github.com/Markhtus/CheckBattery/releases) e baixe o `baterry.exe` da versão mais recente.
+2. Copie o arquivo para uma pasta fixa, por exemplo `C:\Programas\baterry\`.
 3. Para iniciar junto com o Windows:
    1. Pressione `Win + R`, digite `shell:startup` e dê Enter.
-   2. Clique com o botão direito no `bateria.exe` > **Criar atalho**.
+   2. Clique com o botão direito no `baterry.exe` > **Criar atalho**.
    3. Mova o atalho para a pasta que abriu.
 4. Reinicie o notebook (ou execute o `.exe` uma vez) e pronto.
 
@@ -67,13 +67,13 @@ Não é necessário ter Python instalado.
 
 ### Conferir se está rodando
 
-Abra o Gerenciador de Tarefas (`Ctrl + Shift + Esc`) e procure por `bateria.exe` na aba **Processos** ou **Detalhes**.
+Abra o Gerenciador de Tarefas (`Ctrl + Shift + Esc`) e procure por `baterry.exe` na aba **Processos** ou **Detalhes**.
 
 ### Desinstalar
 
-1. Finalize o `bateria.exe` pelo Gerenciador de Tarefas.
+1. Finalize o `baterry.exe` pelo Gerenciador de Tarefas.
 2. Apague o atalho da pasta `shell:startup`.
-3. Apague o arquivo `bateria.exe`.
+3. Apague o arquivo `baterry.exe`.
 
 ## ⚙️ Configuração
 
@@ -84,18 +84,18 @@ Os valores padrão são:
 | `LIMITE`    | `80`   | Porcentagem da bateria que dispara o aviso     |
 | `INTERVALO` | `30`   | Segundos entre cada checagem da bateria        |
 
-Para alterar os valores de forma permanente, edite as constantes no início do `bateria.py` e gere o executável novamente.
+Para alterar os valores de forma permanente, edite as constantes no início do `baterry.py` e gere o executável novamente.
 
 Para **testar** sem editar o código, passe os valores na linha de comando:
 
 ```
-python bateria.py <LIMITE> <INTERVALO>
+python baterry.py <LIMITE> <INTERVALO>
 ```
 
 Exemplo, avisando a partir de 60% e checando a cada 5 segundos:
 
 ```
-python bateria.py 60 5
+python baterry.py 60 5
 ```
 
 ## 🛠️ Rodando pelo código-fonte (desenvolvimento)
@@ -103,21 +103,21 @@ python bateria.py 60 5
 **Requisitos:** Windows e Python 3.8 ou superior.
 
 ```
-git clone https://github.com/SEU_USUARIO/aviso-bateria.git
-cd aviso-bateria
+git clone https://github.com/Markhtus/CheckBattery.git
+cd CheckBattery
 
 python -m venv venv
 venv\Scripts\activate
 
 pip install -r requirements.txt
-python bateria.py
+python battery.py
 ```
 
 > No PowerShell, ative o ambiente com `venv\Scripts\Activate.ps1`. Se aparecer erro de política de execução, rode uma vez `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
 
 ### Roteiro de testes
 
-Com o carregador conectado e um limite abaixo da porcentagem atual (ex.: `python bateria.py 60 5`):
+Com o carregador conectado e um limite abaixo da porcentagem atual (ex.: `python battery.py 60 5`):
 
 - [ ] A janela aparece e **não** fecha com o X nem com Alt+F4
 - [ ] A porcentagem exibida atualiza sozinha
@@ -131,15 +131,15 @@ Com o carregador conectado e um limite abaixo da porcentagem atual (ex.: `python
 Com o ambiente virtual ativo:
 
 ```
-pyinstaller --onefile --noconsole bateria.py
+pyinstaller --onefile --noconsole baterry.py
 ```
 
-O arquivo será criado em `dist\bateria.exe`.
+O arquivo será criado em `dist\baterry.exe`.
 
 - `--onefile` gera um único arquivo.
 - `--noconsole` evita abrir uma janela de terminal.
 
-Para publicar: no GitHub, vá em **Releases > Draft a new release**, crie a tag (ex.: `v1.0`) e anexe o `bateria.exe`.
+Para publicar: no GitHub, vá em **Releases > Draft a new release**, crie a tag (ex.: `v1.0`) e anexe o `baterry.exe`.
 
 ## 🗂️ Estrutura do projeto
 
@@ -169,7 +169,7 @@ O código usa apenas `psutil` e `tkinter`, então deve rodar em outros sistemas,
 Não. Sem bateria, o programa detecta isso e encerra sozinho.
 
 **O programa consome muitos recursos?**
-Muito pouco. Ele só consulta o estado da bateria a cada `INTERVALO` segundos.
+Muito pouco. Ele só consulta o estado da baterry a cada `INTERVALO` segundos.
 
 **O antivírus bloqueou o arquivo. E agora?**
 Executáveis gerados com PyInstaller costumam gerar falsos positivos. Você pode adicionar a pasta às exceções do antivírus ou gerar o `.exe` você mesmo a partir do código-fonte.
@@ -207,6 +207,6 @@ Distribuído sob a licença MIT. Veja o arquivo `LICENSE` para mais informaçõe
 
 <div align="center">
 
-Feito com 🔋 para deixar a bateria viver mais.
+Feito com 🔋 para deixar a bataria viver mais.
 
 </div>
