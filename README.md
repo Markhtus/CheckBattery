@@ -55,11 +55,11 @@ Carregador conectado?
 
 Não é necessário ter Python instalado.
 
-1. Acesse a página de [**Releases**](https://github.com/Markhtus/CheckBattery/releases) e baixe o `baterry.exe` da versão mais recente.
-2. Copie o arquivo para uma pasta fixa, por exemplo `C:\Programas\baterry\`.
+1. Acesse a página de [**Releases**](https://github.com/Markhtus/CheckBattery/releases) e baixe o `battery.exe` da versão mais recente.
+2. Copie o arquivo para uma pasta fixa, por exemplo `C:\Programas\battery\`.
 3. Para iniciar junto com o Windows:
    1. Pressione `Win + R`, digite `shell:startup` e dê Enter.
-   2. Clique com o botão direito no `baterry.exe` > **Criar atalho**.
+   2. Clique com o botão direito no `battery.exe` > **Criar atalho**.
    3. Mova o atalho para a pasta que abriu.
 4. Reinicie o notebook (ou execute o `.exe` uma vez) e pronto.
 
@@ -67,13 +67,13 @@ Não é necessário ter Python instalado.
 
 ### Conferir se está rodando
 
-Abra o Gerenciador de Tarefas (`Ctrl + Shift + Esc`) e procure por `baterry.exe` na aba **Processos** ou **Detalhes**.
+Abra o Gerenciador de Tarefas (`Ctrl + Shift + Esc`) e procure por `battery.exe` na aba **Processos** ou **Detalhes**.
 
 ### Desinstalar
 
-1. Finalize o `baterry.exe` pelo Gerenciador de Tarefas.
+1. Finalize o `battery.exe` pelo Gerenciador de Tarefas.
 2. Apague o atalho da pasta `shell:startup`.
-3. Apague o arquivo `baterry.exe`.
+3. Apague o arquivo `battery.exe`.
 
 ## ⚙️ Configuração
 
@@ -84,18 +84,18 @@ Os valores padrão são:
 | `LIMITE`    | `80`   | Porcentagem da bateria que dispara o aviso     |
 | `INTERVALO` | `30`   | Segundos entre cada checagem da bateria        |
 
-Para alterar os valores de forma permanente, edite as constantes no início do `baterry.py` e gere o executável novamente.
+Para alterar os valores de forma permanente, edite as constantes no início do `battery.py` e gere o executável novamente.
 
 Para **testar** sem editar o código, passe os valores na linha de comando:
 
 ```
-python baterry.py <LIMITE> <INTERVALO>
+python battery.py <LIMITE> <INTERVALO>
 ```
 
 Exemplo, avisando a partir de 60% e checando a cada 5 segundos:
 
 ```
-python baterry.py 60 5
+python battery.py 60 5
 ```
 
 ## 🛠️ Rodando pelo código-fonte (desenvolvimento)
@@ -131,15 +131,15 @@ Com o carregador conectado e um limite abaixo da porcentagem atual (ex.: `python
 Com o ambiente virtual ativo:
 
 ```
-pyinstaller --onefile --noconsole baterry.py
+pyinstaller --onefile --noconsole battery.py
 ```
 
-O arquivo será criado em `dist\baterry.exe`.
+O arquivo será criado em `dist\battery.exe`.
 
 - `--onefile` gera um único arquivo.
 - `--noconsole` evita abrir uma janela de terminal.
 
-Para publicar: no GitHub, vá em **Releases > Draft a new release**, crie a tag (ex.: `v1.0`) e anexe o `baterry.exe`.
+Para publicar: no GitHub, vá em **Releases > Draft a new release**, crie a tag (ex.: `v1.0`) e anexe o `battery.exe`.
 
 ## 🗂️ Estrutura do projeto
 
@@ -169,7 +169,7 @@ O código usa apenas `psutil` e `tkinter`, então deve rodar em outros sistemas,
 Não. Sem bateria, o programa detecta isso e encerra sozinho.
 
 **O programa consome muitos recursos?**
-Muito pouco. Ele só consulta o estado da baterry a cada `INTERVALO` segundos.
+Muito pouco. Ele só consulta o estado da battery a cada `INTERVALO` segundos.
 
 **O antivírus bloqueou o arquivo. E agora?**
 Executáveis gerados com PyInstaller costumam gerar falsos positivos. Você pode adicionar a pasta às exceções do antivírus ou gerar o `.exe` você mesmo a partir do código-fonte.
